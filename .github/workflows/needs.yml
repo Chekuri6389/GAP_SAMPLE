@@ -6,7 +6,7 @@ on:
 jobs:
   # Call the reusable workflow
   call-generate:
-    uses: ./.github/workflows/generate-info.yml
+    uses: ./.github/workflows/outputs.yml
 
   # Consume its outputs
   consumer:
