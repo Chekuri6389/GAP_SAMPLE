@@ -1,19 +1,27 @@
-name: Needs Info
+name: Needs Example
 
-on:
-  workflow_dispatch:
+on: 
+   workflow_dispatch
 
 jobs:
-  # Call the reusable workflow
-  call-generate:
-    uses: ./.github/workflows/outputs.yml
-
-  # Consume its outputs
-  consumer:
-    needs: call-generate
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+     - name: print
+       run: echo 'build'   
+   
+  test:
+    needs: build
+    runs-on: windows-latest
+    steps: 
+     - name: print test-chrome
+       run: echo 'test - chrome'
+     - name: print test-edge
+       run: echo 'test - edge'     
+  deploy:
+    needs: [build,test]
     runs-on: ubuntu-latest
     steps:
-      - name: Show the values
-        run: |
-          echo "Timestamp:    ${{ needs.call-generate.outputs.current-time }}"
-          echo "Random number: ${{ needs.call-generate.outputs.random-number }}"
+     - name: print deploy
+       run: echo 'deploy'  
+      
