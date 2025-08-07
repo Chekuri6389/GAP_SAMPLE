@@ -80,4 +80,4 @@ jobs:
       - name: Simulate environment
         run: |
           echo "Running environment: ${{ matrix.env }}"
-          if [[ "${{ matrix.env }}" == "beta" ]]; then exit 1; fi
+      #    if [[ "${{ matrix.env }}" == "beta" ]]; then exit 1; fi
