@@ -6,13 +6,13 @@ jobs:
   gen-outputs:
     runs-on: ubuntu-latest
     outputs:
-      message: ${{steps.random-num-gen.outputs.number }}
+      message: ${{steps.random-num-gen.outputs.message }}
  
     steps: 
       - id: random-num-gen
         run: |
-          echo "number=101" >> $GITHUB_OUTPUT
-          echo "msg=Ramdom Number" >> $GITHUB_OUTPUT
+          echo "message=Hello" >> $GITHUB_OUTPUT
+          echo "msg=Hello" >> $GITHUB_OUTPUT
   dis-outputs:
     needs: gen-outputs
     runs-on: ubuntu-latest
