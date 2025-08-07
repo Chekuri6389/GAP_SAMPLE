@@ -1,29 +1,26 @@
 name: GitHub Context
 
-
 on:
- workflow_dispatch
-jobs:
- github_context:
-  runs-on: ubuntu-latest
-  steps:
-   - name: Print Info about Github
-     run: |
-      echo 'Repository details ${{github.repository}}'  
-      echo 'Repo id ${{github.repository_id}}'
-      echo 'Repo url ${{github.repositoryUrl}}'
-      echo 'Repo token ${{github.token}}'
-      echo 'Workflow name ${{github.workflow}}'
-      echo 'Actor ${{github.actor}}'
-      echo  'ref details ${{github.ref}}'
-      echo 'trigger event $${{github.event_name}}'
-      echo 'Run id ${{github.run_id}}'
-      echo 'Runner number is ${{github.run_number}}'
-      echo 'Run id ${{github.run_id}}'
+  workflow_dispatch:
 
-   -  name: Examples
-      if: github.ref ==  'refs/heads/master'
-      run: echo 'deploy'
-   -  if: github.event_name == 'pull_request'
-      run: echo 'trigger the workflow'
-      
+jobs:
+  show-github-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Info about GitHub Context
+        run: |
+          echo "Repository:        ${{ github.repository }}"
+          echo "Repository ID:     ${{ github.repository_id }}"
+          echo "Repository URL:    ${{ github.repositoryUrl }}"
+          echo "Server URL:        ${{ github.server_url }}"
+          echo "API URL:           ${{ github.api_url }}"
+          echo "GraphQL URL:       ${{ github.graphql_url }}"
+          echo "Workflow:          ${{ github.workflow }}"
+          echo "Ref:               ${{ github.ref }}"
+          echo "Event Name:        ${{ github.event_name }}"
+          echo "SHA:               ${{ github.sha }}"
+          echo "Run ID:            ${{ github.run_id }}"
+          echo "Run Number:        ${{ github.run_number }}"
+          echo "Job:               ${{ github.job }}"
+          echo "Actor:             ${{ github.actor }}"
+          echo "Workspace:         ${{ github.workspace }}"
