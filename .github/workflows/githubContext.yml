@@ -24,13 +24,3 @@ jobs:
           echo "Job:               ${{ github.job }}"
           echo "Actor:             ${{ github.actor }}"
           echo "Workspace:         ${{ github.workspace }}"
-
-      - name: Sample
-        if: github.ref == 'refs/heads/main'
-        run: echo 'deploy'
-      - name: Pull Request Trigger Event
-        if: github.event_name == 'pull_request'
-        run: echo 'trigger the pull workflow'
-      - name: Push Request
-        if: github.event_name == 'push'
-        run: echo 'trigger the push workflow'
